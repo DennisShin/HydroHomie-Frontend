@@ -7,19 +7,12 @@ function Nav() {
   const navigate = useNavigate()
   let isLoggedIn = true
 
-  // function logOut(event){
-  //   fetch("http://127.0.0.1:5000/logout", {
-  //     method: 'DELETE',
-  //   })
-
-  //   navigate("/login")
-  // }
 
     return(
         <>
         <div className="navbar bg-base-100">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl" href="/">HydroHomie</a>
+    <a className="btn btn-ghost text-xl" href="/home">HydroHomie</a>
   
   </div>
     <div className="flex-none gap-2">
