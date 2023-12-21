@@ -25,7 +25,6 @@ export default function UserProfile(){
                     Profile
                 </a>
             </li>
-            <li><a>Settings</a></li>
             <li><button onClick={logOut}>Logout</button></li>
         </ul>
     </div>

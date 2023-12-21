@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom'
 import Nav from "./Navbar"
+import Footer from "./Footer"
 
 function Root() {
 
@@ -8,6 +9,7 @@ function Root() {
         <>
             <Nav />
             <Outlet />
+            <Footer />
         </>
     )
 }

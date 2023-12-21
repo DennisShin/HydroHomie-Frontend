@@ -26,12 +26,24 @@ function logIn(event){
     // setUser({username:"", password:""})
     
     if (user) {
-        navigate('/home')
+        navigate('/app')
     }
     })
 }
 
-
+function TestLogIn(event){
+    event.preventDefault();
+    fetch("http://127.0.0.1:5555/login", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({"username": "Demo", "password": "password"})
+    }).then(response=> response.json())
+    .then(data=>{
+    setUser(data)
+    // setUser({username:"", password:""})
+        navigate('/app')
+    })
+}
 
 
 return(
@@ -42,11 +54,11 @@ return(
         <h1 className="text-5xl font-bold">🚰 Login now!</h1>
         <p className="py-6">Join all your HydroHomies today by creating an account and logging in!</p>
     </div>
-    <div>
+    {/* <div>
         <p>TEST USER</p>
         <p>Username: gun</p>
         <p>Password: password</p>
-    </div>
+    </div> */}
     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form className="card-body" onSubmit={logIn}>
         <div className="form-control">
@@ -67,12 +79,15 @@ return(
         <div className="form-control mt-6">
             <button type="submit"  className="btn btn-info">Login</button> 
         </div>
+
+            <button className="btn btn-neutral self-center w-80" type="button" onClick={TestLogIn}> Demo </button>
+
         </form>
         <div role="alert" className="alert alert-success hidden">
             <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             <span>Your purchase has been confirmed!</span>
         </div>
-        <button className="btn w-72 self-center mb-4 btn-outline btn-accent mt-2">Sign Up!</button>
+        <button className="btn w-80 self-center mb-4 btn-outline btn-accent mt-2">Sign Up!</button>
 
     </div>
     </div>

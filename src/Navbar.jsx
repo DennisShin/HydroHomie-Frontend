@@ -5,17 +5,41 @@ import UserProfile from "./UserProfileButton";
 function Nav() {
 
   const navigate = useNavigate()
+  const [streak, setStreak] = useState()
   let isLoggedIn = true
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5555/api/users/4")
+    .then(response => response.json())
+    .then(data => {
+        setStreak(data.streak)
+      })
+  },[])
 
 
     return(
         <>
         <div className="navbar bg-base-100">
   <div className="flex-1">
-    <a className="btn btn-ghost text-xl" href="/home">HydroHomie</a>
+    <a className="btn btn-ghost text-xl" href="/app">HydroHomie</a>
   
   </div>
     <div className="flex-none gap-2">
+
+    <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-circle btn-outline m-1" >💦</div>
+        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-80 mt-2">
+          <li><span><p className=" font-bold">Friends</p> <p className=" font-bold text-end">Streak</p></span></li>
+          <li> <span><p>Bobby</p> <p className=" text-end">💧 9</p></span> </li>
+          <li> <span><p>Mark</p> <p className=" text-end">💧 7</p></span> </li>
+          <li> <span><p>Ryan</p> <p className=" text-end">💧 4</p></span> </li>
+          <li> <span className=" bg-waterHighlight text-neutral-50"><p>YOU</p> <p className=" text-end">💧 {streak}</p></span> </li>
+          <li> <span><p>Sophie</p> <p className=" text-end">💧 2</p></span> </li>
+          <li> <span><p>Frank</p> <p className=" text-end">💧 2</p></span> </li>
+          <li> <span><p>Sam</p> <p className=" text-end">💧 0</p></span> </li>
+        </ul>
+    </div>
+
     
     {isLoggedIn ? <UserProfile /> : null}
 
